@@ -96,13 +96,31 @@ export default function Dashboard() {
   const progressPercent = (tasks && tasks.length > 0) ? Math.round((completedCount / tasks.length) * 100) : 0;
 
   // Combine raw Firestore activeTasks with AI-generated prioritizedTasks
-  const displayTasks = (Array.isArray(executiveState?.prioritizedTasks) ? executiveState.prioritizedTasks : (activeTasks || []).map(t => ({...t, priority: 99, riskLevel: 'Low', score: 0})))
-    .map(aiTask => {
-      const rawTask = (activeTasks || []).find(t => t.id === aiTask?.id);
-      return rawTask ? { ...rawTask, ...aiTask } : null;
-    })
-    .filter(Boolean)
-    .sort((a, b) => (a.priority || 99) - (b.priority || 99));
+  const aiPrioritized = Array.isArray(executiveState?.prioritizedTasks) ? executiveState.prioritizedTasks : [];
+  
+  const displayTasks = (activeTasks || []).map(rawTask => {
+    const aiData = aiPrioritized.find(t => t.id === rawTask.id);
+    if (aiData) {
+      return { ...rawTask, ...aiData };
+    }
+    
+    const postponeData = Array.isArray(executiveState?.rescuePlan?.tasksToPostpone) 
+      ? executiveState.rescuePlan.tasksToPostpone.find(t => t.id === rawTask.id) 
+      : null;
+      
+    if (postponeData) {
+      return { 
+        ...rawTask, 
+        priority: 99, 
+        riskLevel: 'Low', 
+        score: 0, 
+        reason: postponeData.reason || 'Postponed to protect focus for more critical tasks.',
+        nextAction: 'Postponed'
+      };
+    }
+    
+    return { ...rawTask, priority: 99, riskLevel: 'Low', score: 0, reason: 'Pending AI prioritization.' };
+  }).sort((a, b) => (a.priority || 99) - (b.priority || 99));
 
   const handleStartMission = () => {
     if (!displayTasks.length) return;
