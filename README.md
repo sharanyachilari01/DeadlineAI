@@ -1,213 +1,38 @@
-# DeadlineAI 🚀
+# DeadlineAI
 
-> **An AI-Powered Executive Productivity Assistant that transforms tasks into intelligent execution strategies.**
+> An AI-powered executive productivity assistant that transforms tasks into intelligent execution strategies.
 
-DeadlineAI is an AI-powered productivity companion designed to help users make better decisions under time pressure. Instead of acting as a traditional reminder application, it functions as an **Executive Decision Engine** that analyzes the user's complete workload, identifies priorities, predicts consequences, recommends recovery strategies, and generates realistic execution plans.
-
----
+DeadlineAI is an AI-powered productivity companion designed to help users make better decisions under time pressure. Instead of functioning as a traditional reminder application, it analyzes the user's complete workload, prioritizes tasks, explains every recommendation, predicts scheduling consequences, and generates realistic execution plans.
 
 ## Live Demo
 
-**Deployed Application:**  
+**Application:**  
 https://deadlineai-658ba.web.app/
 
----
+## Problem Statement
 
-# Problem Statement
+Traditional productivity applications mainly act as reminder systems. While they notify users about upcoming deadlines, they leave all planning and prioritization to the user. As workloads grow, users experience decision fatigue, struggle to identify what should be done first, and often miss important deadlines.
 
-Modern productivity applications primarily function as reminder systems. While they notify users about upcoming deadlines, they rely entirely on users to determine:
+DeadlineAI addresses this problem by acting as an AI-powered executive assistant that helps users decide what to do, when to do it, and why.
 
-- Which task should be completed first
-- Whether today's workload is realistically achievable
-- Which tasks can safely be postponed
-- The consequences of delaying important work
-- How to recover when schedules become overloaded
+## Solution
 
-As the number of commitments increases, users experience **decision fatigue**, resulting in missed deadlines, rushed work, unnecessary stress, and inefficient time management.
+DeadlineAI evaluates the user's complete workload using Google Gemini 2.5 Flash together with a deterministic offline fallback engine. By considering deadlines, estimated effort, importance, progress, categories, and available productive hours, it generates personalized recommendations, recovery strategies, execution plans, and productivity insights.
 
-DeadlineAI addresses this challenge by acting as an **AI Executive Assistant** that not only reminds users about work, but actively helps them decide **what to do, when to do it, and why.**
+## Core Features
 
----
+- **AI Executive Decision Engine** – Analyzes the complete workload to generate intelligent, explainable recommendations.
+- **Executive Dashboard** – Displays the daily mission, prioritized tasks, execution plan, notifications, and AI reasoning.
+- **Intelligent Task Management** – Create tasks with deadlines, estimated effort, categories, importance levels, and progress tracking.
+- **Dynamic Available Hours** – Adapts recommendations based on the user's available productive hours for the day.
+- **Rescue Mode** – Detects overloaded schedules and generates recovery strategies with task postponement recommendations.
+- **Today's Execution Plan** – Produces flexible duration-based work blocks instead of fixed clock schedules.
+- **What-If Simulator** – Predicts the consequences of delaying or skipping tasks and recommends better alternatives.
+- **Executive Insights** – Provides workload analysis, stress assessment, focus recommendations, and completion forecasts.
+- **Offline AI Fallback** – Maintains intelligent recommendations even when the Gemini API is unavailable.
+- **Real-Time Synchronization** – Automatically refreshes AI recommendations whenever tasks or user settings change.
 
-# Solution
-
-DeadlineAI analyzes the user's complete workload using **Google Gemini 2.5 Flash** together with locally computed fallback logic.
-
-Rather than evaluating tasks individually, the AI considers the entire schedule—including deadlines, estimated effort, progress, task importance, available productive hours, and contextual information—to generate a personalized execution strategy.
-
-The result is an intelligent productivity assistant capable of:
-
-- Prioritizing work
-- Explaining every recommendation
-- Detecting overload
-- Generating realistic execution plans
-- Predicting scheduling consequences
-- Helping users recover from impossible workloads
-
----
-
-# Core Features
-
-## AI Executive Decision Engine
-
-DeadlineAI continuously evaluates the user's complete workload rather than individual tasks. The AI reasons about deadlines, estimated effort, available productive hours, task importance, completion progress, and category to determine the most effective execution strategy.
-
-Unlike conventional task managers, recommendations are generated using holistic workload analysis instead of simple deadline sorting.
-
----
-
-## Executive Dashboard
-
-The Dashboard serves as the central command center of the application.
-
-It provides:
-
-- Executive Mission
-- Prioritized Task List
-- AI-generated Reasoning
-- Trade-offs
-- Expected Benefits
-- Executive Notifications
-- Today's Execution Plan
-- Daily Progress Tracking
-
-Instead of displaying a simple to-do list, the dashboard explains **what should be done first and why.**
-
----
-
-## Daily Available Productive Hours
-
-Each day, users specify the number of productive hours realistically available.
-
-This value becomes the foundation of the AI's reasoning and influences:
-
-- Prioritization
-- Workload Analysis
-- Rescue Mode
-- Stress Level
-- Execution Plan
-- Notifications
-- Executive Insights
-
-Whenever availability changes, the AI automatically recalculates recommendations.
-
----
-
-## Intelligent Task Management
-
-Users can create detailed tasks containing:
-
-- Task Title
-- Description
-- Deadline
-- Estimated Hours
-- Importance (High / Medium / Low)
-- Category (Academic, Career, Personal, Finance, Health, Others)
-- Progress (0–100%)
-
-Every field contributes directly to AI reasoning rather than acting as simple metadata.
-
----
-
-## Explainable AI Recommendations
-
-Every recommendation generated by DeadlineAI includes transparent reasoning.
-
-For each prioritized task, the AI explains:
-
-- Why the task was selected
-- Risk Level
-- Trade-offs
-- Expected Benefits
-- Recommended Next Action
-
-This improves transparency and builds user trust.
-
----
-
-## Today's Execution Plan
-
-Instead of assigning rigid calendar times, DeadlineAI creates flexible **duration-based execution blocks** such as:
-
-- 90 minutes of Deep Work
-- 30 minute Review Session
-- 15 minute Buffer
-
-This allows users to adapt recommendations to their own schedule while maintaining realistic productivity.
-
----
-
-## Rescue Mode
-
-When the total workload exceeds the user's available productive hours, DeadlineAI automatically activates **Rescue Mode**.
-
-The AI generates:
-
-- Immediate Action
-- Success Probability
-- Recovery Strategy
-- Tasks Safe to Postpone
-- Reasons for Postponement
-
-This helps users maximize the probability of completing their most important work.
-
----
-
-## What-If Simulator
-
-The What-If Simulator enables users to evaluate scheduling decisions before making them.
-
-The AI predicts:
-
-- Risk Increase
-- Expected Consequences
-- Alternative Strategy
-- AI Confidence
-
-Users can safely explore different planning scenarios without affecting their actual schedule.
-
----
-
-## Executive Insights
-
-DeadlineAI summarizes the user's workload using natural language rather than isolated statistics.
-
-Insights include:
-
-- Workload Analysis
-- Stress Level
-- Completion Forecast
-- Focus Recommendations
-- Productivity Summary
-
-These insights provide a high-level overview of the user's daily workload.
-
----
-
-## Offline AI Fallback
-
-To ensure uninterrupted functionality, DeadlineAI includes a deterministic local reasoning engine.
-
-If the Gemini API becomes unavailable because of quota limits or network issues, the application automatically switches to the offline engine, allowing users to continue receiving meaningful recommendations without disruption.
-
----
-
-## Real-Time Synchronization
-
-DeadlineAI uses Cloud Firestore listeners to monitor changes in tasks and user settings.
-
-Whenever a task is:
-
-- Added
-- Updated
-- Completed
-- Deleted
-
-or the user's available productive hours change, the AI automatically performs a fresh evaluation so recommendations always remain up to date.
-
----
-
-# System Architecture
+## System Architecture
 
 ```
                          User
@@ -236,105 +61,53 @@ or the user's available productive hours change, the AI automatically performs a
                                Simulator
 ```
 
----
+## Technology Stack
 
-# Technology Stack
-
-## Frontend
-
+**Frontend**
 - React
 - Vite
 - Tailwind CSS
 - React Router
 
----
-
-## Backend & Database
-
+**Backend & Database**
 - Firebase Authentication
 - Cloud Firestore
 - Firebase Hosting
 
----
-
-## Artificial Intelligence
-
+**Artificial Intelligence**
 - Google Gemini 2.5 Flash
 - Prompt Engineering
 - Executive Decision Engine
-- Explainable AI
 - Deterministic Offline Fallback
 
----
+**UI Components**
+- Lucide React
 
-## UI Components
+## Google Technologies Used
 
-- Lucide React Icons
+- **Google Gemini 2.5 Flash** for workload analysis, prioritization, execution planning, rescue strategies, notifications, and insights.
+- **Firebase Authentication** for secure user authentication.
+- **Cloud Firestore** for storing tasks and daily user settings.
+- **Firebase Hosting** for deployment and production hosting.
 
----
+## Local Setup
 
-# Google Technologies Used
-
-## Google Gemini 2.5 Flash
-
-Used to analyze the user's workload and generate:
-
-- Executive Mission
-- Prioritization
-- Execution Plans
-- Notifications
-- Rescue Strategies
-- Executive Insights
-- What-If Predictions
-
----
-
-## Firebase Authentication
-
-Provides secure user authentication and personalized workspaces.
-
----
-
-## Cloud Firestore
-
-Stores:
-
-- User Tasks
-- Daily Available Hours
-- User Settings
-
-Cloud Firestore serves as the application's **single source of truth**.
-
----
-
-## Firebase Hosting
-
-Hosts the production-ready web application with secure HTTPS deployment.
-
----
-
-# 💻 Local Setup
-
-## 1. Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/sharanyachilari01/DeadlineAI.git
 cd DeadlineAI
 ```
 
----
-
-## 2. Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
----
+### Configure Environment Variables
 
-## 3. Configure Environment Variables
-
-Create a `.env` file.
+Create a `.env` file and add the following:
 
 ```env
 VITE_FIREBASE_API_KEY=
@@ -347,39 +120,29 @@ VITE_FIREBASE_APP_ID=
 VITE_GEMINI_API_KEY=
 ```
 
----
-
-## 4. Start Development Server
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
----
-
-## 5. Build Production Version
+### Build for Production
 
 ```bash
 npm run build
 ```
 
----
+## Future Enhancements
 
-# Future Enhancements
+- Google Calendar integration
+- Email and push notifications
+- Voice-based task creation
+- Team collaboration and shared workspaces
+- AI memory for long-term productivity analysis
+- Mobile application for Android and iOS
 
-- Google Calendar Integration
-- Email & Push Notifications
-- Voice-based Task Creation
-- Team Collaboration
-- AI Memory for Long-Term Productivity
-- Mobile Application (Android & iOS)
-- Personalized Productivity Analytics
-- Multi-device Synchronization
-
----
-
-# Developed For
+## Developed For
 
 **Vibe2Ship 2026 – Google AI Hackathon**
 
-DeadlineAI demonstrates how AI can move beyond reminders to become an intelligent executive assistant capable of helping users make better decisions, reduce cognitive overload, and execute their daily work more effectively.
+DeadlineAI demonstrates how AI can move beyond reminders to become an intelligent executive assistant that helps users prioritize work, reduce cognitive overload, and execute their daily tasks more effectively.
