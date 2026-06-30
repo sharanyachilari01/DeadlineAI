@@ -11,9 +11,6 @@ DeadlineAI is an AI-powered productivity companion designed to help users make b
 **Deployed Application:**  
 https://deadlineai-658ba.web.app/
 
-**GitHub Repository:**  
-https://github.com/sharanyachilari01/DeadlineAI
-
 ---
 
 # 📖 Problem Statement
