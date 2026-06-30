@@ -1,63 +1,388 @@
 # DeadlineAI 🚀
 
-> Your AI Executive Productivity Agent & Decision Engine
+> **An AI-Powered Executive Productivity Assistant that transforms tasks into intelligent execution strategies.**
 
-DeadlineAI is a next-generation task manager. Instead of passively storing lists of tasks, it actively analyzes your workload, predicts consequences, and acts as a central **AI Decision Engine** to guide your daily execution.
+DeadlineAI is an AI-powered productivity companion designed to help users make better decisions under time pressure. Instead of acting as a traditional reminder application, it functions as an **Executive Decision Engine** that analyzes the user's complete workload, identifies priorities, predicts consequences, recommends recovery strategies, and generates realistic execution plans.
 
-## The Problem
-Modern professionals suffer from decision paralysis. When you are overwhelmed with 20+ tasks, traditional to-do lists fail because they expect *you* to figure out the priority, sequence, and risk level.
+---
 
-## The Solution
-DeadlineAI utilizes Google's Gemini AI to dynamically triage your tasks. Every time your workload changes, it automatically recalculates your "Mission Control" dashboard, generates a visual timeline, and warns you if your schedule is mathematically overloaded. 
+## 🌐 Live Demo
 
-## Core Features 🎯
+**Deployed Application:**  
+https://deadlineai-658ba.web.app/
 
-1. **AI Decision Engine:** Constantly evaluates all tasks against available time and deadlines.
-2. **Mission Control:** A dashboard that provides a single "Today's Mission" and the "First Action" you must take, backed by AI reasoning.
-3. **Rescue Protocol:** An emergency mode that calculates a minimum-viable survival plan when you are overwhelmed.
-4. **What-If Simulator:** Predict the cascading consequences of skipping or delaying tasks.
-5. **Dynamic Overload Detection:** Automatically warns you if estimated hours exceed available hours.
-6. **AI Explainability:** Every recommendation comes with an expandable "Why?" panel and a Confidence Score.
+**GitHub Repository:**  
+https://github.com/sharanyachilari01/DeadlineAI
 
-## Architecture & Data Modeling 🏗️
-DeadlineAI separates **Task State** from **User Daily Context**. 
-Instead of hardcoding "Available Hours Today" onto every individual task (which causes stale data as your schedule changes), your daily availability is stored in a global `users/{uid}/settings` document. 
-The **AIContext** dynamically merges your immutable tasks with your daily availability, and caches the result via a hash in the `decisionEngine`. This ensures that when your schedule opens up, the AI instantly recalculates priorities and insights without forcing you to edit every single task.
+---
 
-## Tech Stack & Google Technologies 🛠️
-*   **Frontend:** React, Vite, Tailwind CSS (Glassmorphism & Responsive Design)
-*   **Database & Auth:** Firebase (Firestore, Firebase Authentication)
-*   **Artificial Intelligence:** `@google/generative-ai` SDK (Google **Gemini 1.5 Flash**)
-*   **Icons:** Lucide React
+# 📖 Problem Statement
 
-## Local Setup Instructions 💻
+Modern productivity applications primarily function as reminder systems. While they notify users about upcoming deadlines, they rely entirely on users to determine:
 
-1. **Clone & Install**
-   ```bash
-   git clone <repo-url>
-   cd DeadlineAI
-   npm install
-   ```
+- Which task should be completed first
+- Whether today's workload is realistically achievable
+- Which tasks can safely be postponed
+- The consequences of delaying important work
+- How to recover when schedules become overloaded
 
-2. **Environment Variables**
-   Rename `.env.example` to `.env` and fill in your Firebase and Gemini credentials:
-   ```env
-   VITE_FIREBASE_API_KEY=your_firebase_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-   VITE_GEMINI_API_KEY=your_gemini_api_key
-   ```
-   *(Note: The app contains robust mock fallbacks and will continue to work safely even if the Gemini API key is omitted!)*
+As the number of commitments increases, users experience **decision fatigue**, resulting in missed deadlines, rushed work, unnecessary stress, and inefficient time management.
 
-3. **Run Development Server**
-   ```bash
-   npm run dev
-   ```
+DeadlineAI addresses this challenge by acting as an **AI Executive Assistant** that not only reminds users about work, but actively helps them decide **what to do, when to do it, and why.**
 
-## Future Scope 🔮
-*   Integrate Google Calendar API for automatic two-way timeline syncing.
-*   Implement multi-modal inputs (e.g., voice memos to tasks).
-*   Add team collaboration features (Delegation Engine).
+---
+
+# 💡 Solution
+
+DeadlineAI analyzes the user's complete workload using **Google Gemini 2.5 Flash** together with locally computed fallback logic.
+
+Rather than evaluating tasks individually, the AI considers the entire schedule—including deadlines, estimated effort, progress, task importance, available productive hours, and contextual information—to generate a personalized execution strategy.
+
+The result is an intelligent productivity assistant capable of:
+
+- Prioritizing work
+- Explaining every recommendation
+- Detecting overload
+- Generating realistic execution plans
+- Predicting scheduling consequences
+- Helping users recover from impossible workloads
+
+---
+
+# ✨ Core Features
+
+## 🧠 AI Executive Decision Engine
+
+DeadlineAI continuously evaluates the user's complete workload rather than individual tasks. The AI reasons about deadlines, estimated effort, available productive hours, task importance, completion progress, and category to determine the most effective execution strategy.
+
+Unlike conventional task managers, recommendations are generated using holistic workload analysis instead of simple deadline sorting.
+
+---
+
+## 📌 Executive Dashboard
+
+The Dashboard serves as the central command center of the application.
+
+It provides:
+
+- Executive Mission
+- Prioritized Task List
+- AI-generated Reasoning
+- Trade-offs
+- Expected Benefits
+- Executive Notifications
+- Today's Execution Plan
+- Daily Progress Tracking
+
+Instead of displaying a simple to-do list, the dashboard explains **what should be done first and why.**
+
+---
+
+## ⏳ Daily Available Productive Hours
+
+Each day, users specify the number of productive hours realistically available.
+
+This value becomes the foundation of the AI's reasoning and influences:
+
+- Prioritization
+- Workload Analysis
+- Rescue Mode
+- Stress Level
+- Execution Plan
+- Notifications
+- Executive Insights
+
+Whenever availability changes, the AI automatically recalculates recommendations.
+
+---
+
+## 📝 Intelligent Task Management
+
+Users can create detailed tasks containing:
+
+- Task Title
+- Description
+- Deadline
+- Estimated Hours
+- Importance (High / Medium / Low)
+- Category (Academic, Career, Personal, Finance, Health, Others)
+- Progress (0–100%)
+
+Every field contributes directly to AI reasoning rather than acting as simple metadata.
+
+---
+
+## 🎯 Explainable AI Recommendations
+
+Every recommendation generated by DeadlineAI includes transparent reasoning.
+
+For each prioritized task, the AI explains:
+
+- Why the task was selected
+- Risk Level
+- Trade-offs
+- Expected Benefits
+- Recommended Next Action
+
+This improves transparency and builds user trust.
+
+---
+
+## 📅 Today's Execution Plan
+
+Instead of assigning rigid calendar times, DeadlineAI creates flexible **duration-based execution blocks** such as:
+
+- 90 minutes of Deep Work
+- 30 minute Review Session
+- 15 minute Buffer
+
+This allows users to adapt recommendations to their own schedule while maintaining realistic productivity.
+
+---
+
+## 🚨 Rescue Mode
+
+When the total workload exceeds the user's available productive hours, DeadlineAI automatically activates **Rescue Mode**.
+
+The AI generates:
+
+- Immediate Action
+- Success Probability
+- Recovery Strategy
+- Tasks Safe to Postpone
+- Reasons for Postponement
+
+This helps users maximize the probability of completing their most important work.
+
+---
+
+## 🔍 What-If Simulator
+
+The What-If Simulator enables users to evaluate scheduling decisions before making them.
+
+The AI predicts:
+
+- Risk Increase
+- Expected Consequences
+- Alternative Strategy
+- AI Confidence
+
+Users can safely explore different planning scenarios without affecting their actual schedule.
+
+---
+
+## 📊 Executive Insights
+
+DeadlineAI summarizes the user's workload using natural language rather than isolated statistics.
+
+Insights include:
+
+- Workload Analysis
+- Stress Level
+- Completion Forecast
+- Focus Recommendations
+- Productivity Summary
+
+These insights provide a high-level overview of the user's daily workload.
+
+---
+
+## ⚡ Offline AI Fallback
+
+To ensure uninterrupted functionality, DeadlineAI includes a deterministic local reasoning engine.
+
+If the Gemini API becomes unavailable because of quota limits or network issues, the application automatically switches to the offline engine, allowing users to continue receiving meaningful recommendations without disruption.
+
+---
+
+## 🔄 Real-Time Synchronization
+
+DeadlineAI uses Cloud Firestore listeners to monitor changes in tasks and user settings.
+
+Whenever a task is:
+
+- Added
+- Updated
+- Completed
+- Deleted
+
+or the user's available productive hours change, the AI automatically performs a fresh evaluation so recommendations always remain up to date.
+
+---
+
+# 🏗️ System Architecture
+
+```
+                         User
+                           │
+                           ▼
+              Firebase Authentication
+                           │
+                           ▼
+                  Cloud Firestore
+           (Tasks + User Settings)
+                           │
+                           ▼
+          AI Context & Decision Engine
+                           │
+              ┌────────────┴────────────┐
+              ▼                         ▼
+      Google Gemini 2.5 Flash     Offline Fallback
+              │                         │
+              └────────────┬────────────┘
+                           ▼
+                  Executive State
+                           │
+      ┌────────────┬─────────────┬─────────────┐
+      ▼            ▼             ▼             ▼
+ Dashboard     Rescue Mode   What-If      Insights
+                               Simulator
+```
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+- React
+- Vite
+- Tailwind CSS
+- React Router
+
+---
+
+## Backend & Database
+
+- Firebase Authentication
+- Cloud Firestore
+- Firebase Hosting
+
+---
+
+## Artificial Intelligence
+
+- Google Gemini 2.5 Flash
+- Prompt Engineering
+- Executive Decision Engine
+- Explainable AI
+- Deterministic Offline Fallback
+
+---
+
+## UI Components
+
+- Lucide React Icons
+
+---
+
+# ☁️ Google Technologies Used
+
+## Google Gemini 2.5 Flash
+
+Used to analyze the user's workload and generate:
+
+- Executive Mission
+- Prioritization
+- Execution Plans
+- Notifications
+- Rescue Strategies
+- Executive Insights
+- What-If Predictions
+
+---
+
+## Firebase Authentication
+
+Provides secure user authentication and personalized workspaces.
+
+---
+
+## Cloud Firestore
+
+Stores:
+
+- User Tasks
+- Daily Available Hours
+- User Settings
+
+Cloud Firestore serves as the application's **single source of truth**.
+
+---
+
+## Firebase Hosting
+
+Hosts the production-ready web application with secure HTTPS deployment.
+
+---
+
+# 💻 Local Setup
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/sharanyachilari01/DeadlineAI.git
+cd DeadlineAI
+```
+
+---
+
+## 2. Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 3. Configure Environment Variables
+
+Create a `.env` file.
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+
+VITE_GEMINI_API_KEY=
+```
+
+---
+
+## 4. Start Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 5. Build Production Version
+
+```bash
+npm run build
+```
+
+---
+
+# 🚀 Future Enhancements
+
+- Google Calendar Integration
+- Email & Push Notifications
+- Voice-based Task Creation
+- Team Collaboration
+- AI Memory for Long-Term Productivity
+- Mobile Application (Android & iOS)
+- Personalized Productivity Analytics
+- Multi-device Synchronization
+
+---
+
+# 👩‍💻 Developed For
+
+**Vibe2Ship 2026 – Google AI Hackathon**
+
+DeadlineAI demonstrates how AI can move beyond reminders to become an intelligent executive assistant capable of helping users make better decisions, reduce cognitive overload, and execute their daily work more effectively.
